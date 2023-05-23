@@ -1,0 +1,166 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1208,1917" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>BalaReva.Excel.Charts</x:String>
+      <x:String>BalaReva.Excel.Utilities</x:String>
+      <x:String>BalaReva.Excel.Interfaces</x:String>
+      <x:String>BalaReva.Excel.Base</x:String>
+      <x:String>System.Security</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Utilities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="PayRoll Automation&#xA;&#xA;Generate yearly salary and leave report for an organization." DisplayName="PayRoll Automation (Yearly)" sap:VirtualizedContainerService.HintSize="421,1852" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="UserProfilePath" />
+      <Variable x:TypeArguments="x:String" Name="yearlyFolderName" />
+      <Variable x:TypeArguments="x:String" Name="yearlySalaryReportPath" />
+      <Variable x:TypeArguments="x:String" Name="yearlyLeaveReportPath" />
+      <Variable x:TypeArguments="x:String" Name="sharePointURL" />
+      <Variable x:TypeArguments="ss:SecureString" Name="sharePointPassword" />
+      <Variable x:TypeArguments="x:String" Name="sharePointUsername" />
+      <Variable x:TypeArguments="x:String" Name="userFolderURL" />
+      <Variable x:TypeArguments="x:String" Name="currentYear" />
+      <Variable x:TypeArguments="x:String" Name="yearlySalaryReportName" />
+      <Variable x:TypeArguments="x:String" Name="yearlyLeaveReportName" />
+      <Variable x:TypeArguments="x:String" Name="yearlyUserProfileFolder" />
+      <Variable x:TypeArguments="x:String" Name="sharedDocuments" />
+      <Variable x:TypeArguments="x:String" Name="userPath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message-For starting of yearly process" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Yearly process started...&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creating Yearly Salary Report&#xA;1)out_UserProfilePath- To get the machine user profile path&#xA;2)out_UserPath- To get the user path for creating folder on SharePoint&#xA;3)out_YearlySalaryReportPath- To get the path of the yearly salary report&#xA;4)out_CurrentYear- To get the current year value&#xA;5)out_YearlySalaryReportName- To get the yearly salary report folder name&#xA;6)out_YearlyUserProfileFolder- To get the yearly user profile folder name&#xA;7)out_UserFolderURL- To get the url of user folder on sharepoint&#xA;8)out_SharePointURL- To get the share point URL&#xA;9)out_SharePointUsername- To get the share point username&#xA;10)out_SharePointPassword- To get the share point secure password&#xA;11)out_SharedDocuments- To get the text&quot;Documents&quot;&#xA;12)out_YeralySalaryReportName- To gete name of yearly salary report&#xA;" DisplayName="Invoke Creating Yearly Salary Report workflow" sap:VirtualizedContainerService.HintSize="379,424" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_CreatingYearlySalaryReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_SharePointURL">[sharePointURL]</OutArgument>
+        <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_SharePointPassword">[sharePointPassword]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_SharePointUsername">[sharePointUsername]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_UserFolderURL">[userFolderURL]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CurrentYear">[currentYear]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_YearlySalaryReportPath">[yearlySalaryReportPath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_YearlyFolderName">[yearlyFolderName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_UserProfilePath">[UserProfilePath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_YearlyUserProfileFolder">[yearlyUserProfileFolder]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_UserPath">[userPath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_SharedDocuments">[sharedDocuments]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_YearlySalaryReportName">[yearlySalaryReportName]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creating Yearly Leave Report&#xA;1)in_UserProfilePath- To use the user profile path in full path&#xA;2)in_yearlyFolderName- To use the folder name in fill path&#xA;3)out_YearlyLeaveReportPath- To get the path of the yearly leave report&#xA;4)in_CurrentYear- To use the current year value in the yearly leave report path&#xA;5)in_UserPath- To use the user path for creating folder on SharePoint&#xA;6)in_SharePointURL-  To use the sharepoint url in sharepoint application scope&#xA;7)in_SharePointUsername- To use the username in share point credential&#xA;8)in_SharePointPassword- To use the password in share point credential&#xA;9)in_UserFolderURL- To use the url of user folder on sharepoint&#xA;10)in_SharedDocuments- To use the text&quot;Documents&quot; on SharePoint&#xA;11)out_YeralyLeaveReportName- To get the name of yearly leave report&#xA;" DisplayName="Invoke Creating Yearly Leave Report workflow" sap:VirtualizedContainerService.HintSize="379,439" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_CreatingYearlyLeaveReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[yearlyFolderName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointURL">[sharePointURL]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharePointPassword">[sharePointPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointUsername">[sharePointUsername]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserFolderURL">[userFolderURL]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_YearlyLeaveReportPath">[yearlyLeaveReportPath]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserProfilePath">[UserProfilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserPath">[userPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedDocuments">[sharedDocuments]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_YearlyLeaveReportName">[yearlyLeaveReportName]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Sending mail to the manager&#xA;1)in_YearlyLeaveReportPath- To use the path for sending yearly leave report file&#xA;2)in_YearlySalaryReportPath- To use the path for sending yearly salary report file&#xA;3)in_CurrentYear- To use the current year value in the yearly leave/leave report path&#xA;4)in_YeralyLeaveReportName- To use the name of yearly leave report&#xA;5)in_YeralySalaryReportName- To use the name of yearly salary report" DisplayName="Invoke Send Email Notification  workflow" sap:VirtualizedContainerService.HintSize="379,289" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_SendEmailNotification.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlySalaryReportPath">[yearlySalaryReportPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlyLeaveReportPath">[yearlyLeaveReportPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlySalaryReportName">[yearlySalaryReportName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlyLeaveReportName">[yearlyLeaveReportName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Delete yearly report folder&#xA;1)in_YearlyUserProfileFolder- to use the user profile folder to delete from machine" DisplayName="Invoke Delete Yearly PayRoll Folder(Main) workflow" sap:VirtualizedContainerService.HintSize="379,169" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_DeleteYearlyPayRollFolder(Main).xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlyUserProfileFolder">[yearlyUserProfileFolder]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message- for completion of process" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Yearly process is completed successfully.&quot;]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,353 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ListOfDepartment" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_DictionaryEmail" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_dt_TransactionData" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_FolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharePointUsername" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharePointPassword" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="in_SharePointURL" Type="InArgument(x:String)" />
+    <x:Property Name="in_ImagePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process.in_FolderPath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_FolderPath>
+  <this:Process.in_ImagePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.in_ImagePath>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1208,4404</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>BalaReva.Excel.Graph</x:String>
+      <x:String>BalaReva.Excel.Graph.Interfaces</x:String>
+      <x:String>System.Security</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Graph</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="421,4339" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MonthlyTotalAmount" />
+      <Variable x:TypeArguments="x:String" Name="excelName" />
+      <Variable x:TypeArguments="x:String" Name="monthName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MonthlyLeaves" />
+      <Variable x:TypeArguments="x:String" Name="MonthlyLeaveReport" />
+      <Variable x:TypeArguments="x:String" Name="currentYear" />
+      <Variable x:TypeArguments="x:String" Name="MonthlySalaryReport" />
+      <Variable x:TypeArguments="x:String" Name="userFolderURL" />
+      <Variable x:TypeArguments="x:String" Name="DepartmentsFolderName" />
+      <Variable x:TypeArguments="x:String" Name="userPath" />
+      <Variable x:TypeArguments="x:String" Name="MonthlyLeaveReportName" />
+      <Variable x:TypeArguments="x:String" Name="monthlySalaryReportName" />
+      <Variable x:TypeArguments="x:String" Name="departmentSharePointLink" />
+      <Variable x:TypeArguments="x:String" Name="sharedDocuments" />
+      <Variable x:TypeArguments="x:String" Name="executionDate" />
+      <Variable x:TypeArguments="ss:SecureString" Name="gmailPassword" />
+      <Variable x:TypeArguments="x:String" Name="gmailUsername" />
+      <Variable x:TypeArguments="x:Int32" Name="smtpPort" />
+      <Variable x:TypeArguments="x:String" Name="smtpServer" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creating Folders and Excel File Departments&#xA;1)in_ListOfDepartment- To iterate through the list of the departments&#xA;2)in_dt_TransactionData-  To filter the Employee data table&#xA;3)in_FolderPath- To use the pay roll folder path&#xA;4)out_ExcelName- To get the  filtered Excel name&#xA;5)out_MonthName- To get the month name  &#xA;6)in_SharePointURL-  To use the  sharepoint url in sharepoint application scope&#xA;7)in_SharePointUsername- To use the username in share point credential&#xA;8)in_SharePointPassword- To use the password in share point credential&#xA;9)out_CurrentYear- To get the current year &#xA;10)out_DepartmentsFolderName- To get the text &quot;Department&quot;&#xA;11)out_UserFolderURL- To get the url of user folder on sharepoint&#xA;12)out_UserPath- To get the user path(General/RPA/User)&#xA;13)out_SharedDocuments- To get &quot;Documents&quot; text" DisplayName="Invoke Create Folders On SharePoint workflow" sap:VirtualizedContainerService.HintSize="379,409" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_CreateFoldersOnSharePoint.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfDepartment">
+          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="in_ListOfDepartment" />
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionData">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_TransactionData" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FolderPath" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ExcelName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="excelName" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_MonthName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="monthName" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointUsername">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SharePointUsername" />
+        </InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharePointPassword">
+          <mva:VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="in_SharePointPassword" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointURL">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SharePointURL" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CurrentYear">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="currentYear" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_UserFolderURL">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="userFolderURL" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_UserPath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="userPath" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_DepartmentsFolderName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="DepartmentsFolderName" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_SharedDocuments">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="sharedDocuments" />
+        </OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Highlighting Rows based on casual leaves&#xA;1)in_ListOfDepartment-  To iterate through the list of the departments&#xA;2)in_FolderPath- To use the pay roll folder path&#xA;3)in_ExcelName- To use the filtered Excel name in the filtered excel file path&#xA;" DisplayName="Invoke Highlight Employee workflow" sap:VirtualizedContainerService.HintSize="379,229" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_HighlightEmployee.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfDepartment">
+          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="in_ListOfDepartment" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FolderPath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="excelName" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Cheque Generation for the Employee&#xA;1)in_ListOfDepartment-  To iterate through the list of the departments&#xA;2)in_FolderPath- To use the pay roll folder path&#xA;3)in_ExcelName- To use the filtered Excel name in the filtered excel file path&#xA;4)in_ImagePath- To use the path to generate cheque" DisplayName="Invoke Cheque Generation workflow" sap:VirtualizedContainerService.HintSize="379,229" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_ChequeGeneration.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfDepartment">[in_ListOfDepartment]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelName">[excelName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ImagePath">[in_ImagePath]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Upload files to sharepoint&#xA;1)in_ListOfDepartment-  To iterate through the list of the departments&#xA;2)in_FolderPath- To use the payroll  folder path&#xA;3)in_MonthName- To use the month name in the excel files path&#xA;4)in_CurrentYear-  To use the current year in the excel files path&#xA;5)in_SharePointURL-  To use the sharepoint url in sharepoint application scope&#xA;6)in_SharePointUsername- To use the username in share point credential&#xA;7)in_SharePointPassword- To use the password in share point credential&#xA;8)in_UserFolderURL- To use the url of user folder on sharepoint&#xA;9)in_DepartmentsFolderName- To use the text &quot;Department&quot;" DisplayName="Invoke Upload Files On SharePoint workflow" sap:VirtualizedContainerService.HintSize="379,349" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_UploadFilesOnSharePoint.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfDepartment">[in_ListOfDepartment]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthName">[monthName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointURL">[in_SharePointURL]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharePointPassword">[in_SharePointPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointUsername">[in_SharePointUsername]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserFolderURL">[userFolderURL]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentsFolderName">[DepartmentsFolderName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get mail credential &amp; asset&#xA;1)out_SMTPPort- to get the port number in send smtp mail&#xA;2out_SMTPServer- to get the server id in send smtp mail&#xA;3)out_GmailPassword- to get the gmail passsword to send smtp mail&#xA;4)out_GmailPassword- to get the gmail username to send smtp mail" DisplayName="Invoke Email Credential And Asset workflow" sap:VirtualizedContainerService.HintSize="379,229" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_EmailCredentialAndAsset.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_GmailPassword">[gmailPassword]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_GmailUsername">[gmailUsername]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_SMTPPort">[smtpPort]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_SMTPServer">[smtpServer]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send emails to the Team manager&#xA;1)in_DictionaryEmail- To iterate through the dictionary(Department,Email) to get emails of team manager&#xA;2)in_FolderPath-  To use the pay roll  folder path&#xA;3)in_ExcelName-  To use the filtered Excel name in the  filtered excel path&#xA;4)in_MonthName-  To use the month name in the filtered excel  path&#xA;5)in_CurrentYear-  To use the current year in the excel files path&#xA;6)in_GmailUsername- To get the gmail username&#xA;7)in_GmailPassword- To get the gmail password&#xA;8)out_DepartmentSharePointLink- To use the departments SharePoint link&#xA;9)out_ExecutionDate- To use the execution date&#xA;10)in_SMTPPort- To use the port number for send smtp mail&#xA;11)in_SMTPServer- to use the server id for send smtp mail" DisplayName="Invoke Send Email Notification To The Team Manager workflow" sap:VirtualizedContainerService.HintSize="379,364" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_SendEmailNotificationToTheTeamManager.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_DictionaryEmail">[in_DictionaryEmail]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelName">[excelName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthName">[monthName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ExecutionDate">[executionDate]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_DepartmentSharePointLink">[departmentSharePointLink]</OutArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_GmailPassword">[gmailPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GmailUsername">[gmailUsername]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SMTPServer">[smtpServer]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_SMTPPort">[smtpPort]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Calculating the total amount of departments&#xA;1)in_ListOfDepartment-  To iterate through the list of the departments&#xA;2)in_FolderPath- To use the pay roll folder path&#xA;3)in_ExcelName- To use the filtered Excel name in the  filtered excel path&#xA;4)out_dt_MonthlyTotalAmount- To get the monthly total amount in the data table&#xA;" DisplayName="Invoke Calculate Total Salary By Departments workflow" sap:VirtualizedContainerService.HintSize="379,259" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_CalculateTotalSalaryByDepartment.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_MonthlyTotalAmount">[dt_MonthlyTotalAmount]</OutArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfDepartment">[in_ListOfDepartment]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelName">[excelName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Graph Generation&#xA;1)in_SharePointURL-  To use the sharepoint url in sharepoint application scope&#xA;2)in_SharePointUsername- To use the username in share point credential&#xA;3)in_SharePointPassword- To use the password in share point credential&#xA;4)in_UserFolderURL- To use the url of user folder on sharepoint&#xA;5)in_UserPath- To use the user path(General/RPA/User) to create folder on sharepoint&#xA;6)in_FolderPath- To use the  payroll folder path&#xA;7)in_MonthName- To use the month name in the excel path&#xA;8)in_dt_MonthlyTotalAmount- To write monthly total amount data table in the monthly salary excel&#xA;9)out_MonthlySalaryReport- To get the monthly salary excel path&#xA;10)in_CurrentYear- To use the current year in the excel path&#xA;11)out_MonthlySalaryReportName- To get the monthly salary report name&#xA;12)in_SharedDocuments- To use &quot;Documents&quot; text" DisplayName="Invoke Generate Monthly Salary Report workflow" sap:VirtualizedContainerService.HintSize="379,424" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_GenerateMonthlySalaryReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MonthlyTotalAmount">[dt_MonthlyTotalAmount]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthName">[monthName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointUsername">[in_SharePointUsername]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharePointPassword">[in_SharePointPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointURL">[in_SharePointURL]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserFolderURL">[userFolderURL]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserPath">[userPath]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_monthlySalaryReportName">[monthlySalaryReportName]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedDocuments">[sharedDocuments]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_PathMonthlySalaryReport">[MonthlySalaryReport]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Calculating Leaves&#xA;1)in_ListOfDepartment-  To iterate through the list of the departments&#xA;2)in_FolderPath- To use the pay roll  folder path&#xA;3)in_ExcelName- To use the filtered Excel name in the  filtered excel path&#xA;4)out_dt_MonthlyLeaves- To get the monthly total leaves in the data table&#xA;" DisplayName="Invoke Calculate Monthly Leaves workflow" sap:VirtualizedContainerService.HintSize="379,259" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_CalculateMonthlyLeaves.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListOfDepartment">[in_ListOfDepartment]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExcelName">[excelName]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_MonthlyLeaves">[dt_MonthlyLeaves]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Generate Monthly Leave Graph&#xA;1)in_SharePointURL-  To use the sharepoint url in sharepoint application scope&#xA;2)in_SharePointUsername- To use the username in share point credential&#xA;3)in_SharePointPassword- To use the password in share point credential&#xA;4)in_UserFolderURL- To use the url of user folder on sharepoint&#xA;5)in_UserPath- To use the user path(General/RPA/User) to create folder on sharepoint&#xA;6)in_FolderPath- To use the pay roll  folder path&#xA;7)in_dt_MonthlyLeave- To write the monthly total leaves data table in the monthly leave tracker file&#xA;8)out_pathOfMonthlyLeaveReport- To get the monthly leave report path&#xA;9)out_MonthlyLeaveReportName- To get the monthly leave report name&#xA;10)in_MonthName- To use the month name in the excel path&#xA;11)in_CurrentYear- To use the current year in the excel path&#xA;12)in_SharedDocuments- To use &quot;Documents&quot; text" DisplayName="Invoke Generate Monthly Leave Report workflow" sap:VirtualizedContainerService.HintSize="379,424" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_GenerateMonthlyLeaveReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_FolderPath]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MonthlyLeave">[dt_MonthlyLeaves]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthName">[monthName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointURL">[in_SharePointURL]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharePointPassword">[in_SharePointPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePointUsername">[in_SharePointUsername]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserFolderURL">[userFolderURL]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UserPath">[userPath]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_MonthlyLeaveReportName">[MonthlyLeaveReportName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_pathOfMonthlyLeaveReport">[MonthlyLeaveReport]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedDocuments">[sharedDocuments]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Send mail of monthly leaves&#xA;1)in_pathOfMonthlyLeaveReport-To use the monthly leave file to send with mail&#xA;2)in_pathMonthlySalaryReport- To use the monthly salary file to send with mail&#xA;3)in_MonthName- To use the month name in the excel path&#xA;4)in_CurrentYear- To use the current year in the excel path&#xA;5)in_GmailPassword- To use the gmail password to send mail&#xA;6)in_GmailUsername- To use the gmail password to send mail&#xA;7)in_ExecutionDate- To use the today's date&#xA;8)in_DepartmentSharePointLink- To use the department link to access other library on sharepoint&#xA;9)in_MonthlySalaryReportName- To use the monthly salary report name in path&#xA;10)in_MonthlyLeaveReportName- To use the monthly leave report name in path&#xA;11)in_DepartmentsFolderName- To use the text &quot;Departments&quot; in the DepartmentSharePointLink&#xA;12)in_SMTPPort- to use the port number in send smtp mail&#xA;13)in_SMTPServer- to use the server id in send smtp mail&#xA;" DisplayName="Invoke Send MonthlySalaryReport and MonthlyLeaveReport workflow" sap:VirtualizedContainerService.HintSize="379,439" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_SendMonthlySalaryReportAndMonthlyLeaveReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathMonthlySalaryReport">[MonthlySalaryReport]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_GmailPassword">[gmailPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GmailUsername">[gmailUsername]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExecutionDate">[executionDate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[currentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthName">[monthName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentSharePointLink">[departmentSharePointLink]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthlySalaryReportName">[monthlySalaryReportName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathOfMonthlyLeaveReport">[MonthlyLeaveReport]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MonthlyLeaveReportName">[MonthlyLeaveReportName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentsFolderName">[DepartmentsFolderName]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_SMTPPort">[smtpPort]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SMTPServer">[smtpServer]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>

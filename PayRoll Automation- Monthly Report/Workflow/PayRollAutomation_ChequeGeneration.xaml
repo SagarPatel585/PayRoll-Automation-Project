@@ -1,0 +1,259 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Cheque_Generation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:n="clr-namespace:NumberToWordsCurrency;assembly=NumberToWordsCurrency" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ListOfDepartment" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_FolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExcelName" Type="InArgument(x:String)" />
+    <x:Property Name="in_ImagePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Cheque_Generation.in_ListOfDepartment>
+    <InArgument x:TypeArguments="scg:List(x:String)" />
+  </this:Cheque_Generation.in_ListOfDepartment>
+  <this:Cheque_Generation.in_ImagePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Cheque_Generation.in_ImagePath>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1235,2229</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Cheque_Generation_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>NumberToWordsCurrency</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>NumberToWordsCurrency</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Cheque Generation" sap:VirtualizedContainerService.HintSize="554,2164" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="sheetName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- department in list to create cheques for employee" sap:VirtualizedContainerService.HintSize="512,2072" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_ListOfDepartment]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="DepartmentName" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Create path of excel file and generate cheque" sap:VirtualizedContainerService.HintSize="476,1948" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="pathOfExcel" />
+              <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_highlightedDataTable" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message- for starting of the cheque generation" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Cheques generating for &quot;+DepartmentName+&quot; department.&quot;]" />
+            <Assign DisplayName="Get filtered excel file from folder" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[pathOfExcel]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}/{1}/{1}{2}",in_FolderPath,DepartmentName,in_ExcelName)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope- for filtered excel file" sap:VirtualizedContainerService.HintSize="434,360" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" Workbook="[workbook]" WorkbookPath="[pathOfExcel]">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Cheque genetion for each employee" sap:VirtualizedContainerService.HintSize="376,251" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign sheet name" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[sheetName]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[workbook.GetWorkbookSheet(0)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_highlightedDataTable]" DisplayName="Read filtered excel file" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="[sheetName]">
+                      <ui:ExcelReadRange.Range>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:ExcelReadRange.Range>
+                    </ui:ExcelReadRange>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+            </ui:ExcelApplicationScope>
+            <ui:ExcelCloseWorkbook DisplayName="Close Current Workbook" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_2" Workbook="[workbook]" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_highlightedDataTable]" DisplayName="For Each Row - in filtered data table to create cheques" sap:VirtualizedContainerService.HintSize="434,995" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Employee" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Assign and invoke code " sap:VirtualizedContainerService.HintSize="376,875" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="todayDate" />
+                      <Variable x:TypeArguments="sd1:Bitmap" Name="bitmap" />
+                      <Variable x:TypeArguments="sd1:Graphics" Name="graphics" />
+                      <Variable x:TypeArguments="x:String" Name="amountInWords" />
+                      <Variable x:TypeArguments="x:String" Name="amount" />
+                      <Variable x:TypeArguments="x:String" Name="pathOfCheque" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign- Amount" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[amount]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Employee("Total Salary").ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Assign- todayDate" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[todayDate]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Datetime.Today.ToString("MMddyyyy").Trim]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Image to bitmap" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd1:Bitmap">[bitmap]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd1:Bitmap">[new bitmap(in_ImagePath)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Bitmap to graphics" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd1:Graphics">[graphics]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd1:Graphics">[Graphics.FromImage(bitmap)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <n:NumberToWords Currency="{x:Null}" DisplayName="Convert amount in words" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="NumberToWords_3" Number="[cint(amount)]" ResultWords="[amountInWords]" />
+                    <Assign DisplayName="Assign path to save cheques" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[pathOfCheque]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[in_FolderPath+"\"+DepartmentName+"\"+DepartmentName+Employee("Employee Code").ToString+ todayDate+".jpg"]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="graphics.DrawString(employeeName, font, Brushes.Black, namelocation)&#xA;graphics.DrawString(amount, font, Brushes.Black, amountLocation)&#xA;graphics.DrawString(amountInWords, font, Brushes.Black, amountInWordsLocation)&#xA;graphics.DrawString(dayNumber1, font, Brushes.Black, dayNumber1location)&#xA;graphics.DrawString(dayNumber2, font, Brushes.Black, dayNumber2location)&#xA;graphics.DrawString(monthNumber1, font, Brushes.Black, monthNumber1location)&#xA;graphics.DrawString(monthNumber2, font, Brushes.Black, monthNumber2location)&#xA;graphics.DrawString(yearNumber1, font, Brushes.Black, yearNumber1location)&#xA;graphics.DrawString(yearNumber2, font, Brushes.Black, yearNumber2location)&#xA;graphics.DrawString(yearNumber3, font, Brushes.Black, yearNumber3location)&#xA;graphics.DrawString(yearNumber4, font, Brushes.Black, yearNumber4location)&#xA;bitmap.Save(imageFilePath)" DisplayName="Invoke code of cheque generation" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
+                      <ui:InvokeCode.Arguments>
+                        <InArgument x:TypeArguments="sd1:Font" x:Key="font">[new font("Arial",10)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:Graphics" x:Key="graphics">[graphics]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="imageFilePath">[pathOfCheque]</InArgument>
+                        <InArgument x:TypeArguments="sd1:Bitmap" x:Key="bitmap">[bitmap]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="amount">[amount]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="amountInWords">[amountInWords]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="dayNumber1">[todaydate.Substring(2,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="dayNumber2">[todaydate.Substring(3,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="monthNumber1">[todaydate.Substring(0,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="monthNumber2">[todaydate.Substring(1,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="yearNumber1">[todaydate.Substring(4,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="yearNumber2">[todaydate.Substring(5,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="yearNumber3">[todaydate.Substring(6,1)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="yearNumber4">[todaydate.Substring(7,1)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="dayNumber1location">[new PointF(456f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="dayNumber2location">[new PointF(473f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="monthNumber1location">[new PointF(488f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="monthNumber2location">[new PointF(503f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="yearNumber1location">[new PointF(518f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="yearNumber2location">[new PointF(533f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="yearNumber3location">[new PointF(548f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="yearNumber4location">[new PointF(565f,26f)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="employeeName">[Employee("Employee Name").ToString]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="nameLocation">[new PointF(48f,65f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="amountLocation">[new PointF(470f,115f)]</InArgument>
+                        <InArgument x:TypeArguments="sd1:PointF" x:Key="amountInWordsLocation">[new PointF(93f,92f)]</InArgument>
+                      </ui:InvokeCode.Arguments>
+                    </ui:InvokeCode>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <ui:LogMessage DisplayName="Log Message- for completion of the cheque generation" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[dt_highlightedDataTable.RowCount.ToString+&quot; cheques are generated for &quot;+DepartmentName+&quot; department.&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+  </Sequence>
+</Activity>

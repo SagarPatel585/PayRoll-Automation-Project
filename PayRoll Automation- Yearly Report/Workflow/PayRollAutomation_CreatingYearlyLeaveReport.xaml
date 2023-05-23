@@ -1,0 +1,567 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="report" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bec="clr-namespace:BalaReva.Excel.Charts;assembly=BalaReva.Excel" xmlns:bem="clr-namespace:BalaReva.EasyExcel.Main;assembly=BalaReva.EasyExcel" xmlns:bes="clr-namespace:BalaReva.Excel.Sheets;assembly=BalaReva.Excel" xmlns:bes1="clr-namespace:BalaReva.EasyExcel.Sheets;assembly=BalaReva.EasyExcel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:us="clr-namespace:UiPathTeam.SharePoint;assembly=UiPathTeam.SharePoint" xmlns:usa="clr-namespace:UiPathTeam.SharePoint.Activities;assembly=UiPathTeam.SharePoint.Activities" xmlns:usal="clr-namespace:UiPathTeam.SharePoint.Activities.Libraries;assembly=UiPathTeam.SharePoint.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FolderName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentYear" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharePointURL" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharePointPassword" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="in_SharePointUsername" Type="InArgument(x:String)" />
+    <x:Property Name="in_UserFolderURL" Type="InArgument(x:String)" />
+    <x:Property Name="out_YearlyLeaveReportPath" Type="OutArgument(x:String)" />
+    <x:Property Name="in_UserProfilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_UserPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharedDocuments" Type="InArgument(x:String)" />
+    <x:Property Name="out_YearlyLeaveReportName" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:report.in_FolderName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:report.in_FolderName>
+  <this:report.in_CurrentYear>
+    <InArgument x:TypeArguments="x:String" />
+  </this:report.in_CurrentYear>
+  <this:report.in_SharePointURL>
+    <InArgument x:TypeArguments="x:String" />
+  </this:report.in_SharePointURL>
+  <this:report.in_SharePointPassword>
+    <InArgument x:TypeArguments="ss:SecureString" />
+  </this:report.in_SharePointPassword>
+  <this:report.in_SharePointUsername>
+    <InArgument x:TypeArguments="x:String" />
+  </this:report.in_SharePointUsername>
+  <this:report.in_UserProfilePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:report.in_UserProfilePath>
+  <this:report.in_SharedDocuments>
+    <InArgument x:TypeArguments="x:String" />
+  </this:report.in_SharedDocuments>
+  <sap:VirtualizedContainerService.HintSize>1208,8528</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="41">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>BalaReva.Excel.Charts</x:String>
+      <x:String>BalaReva.Excel.Utilities</x:String>
+      <x:String>BalaReva.Excel.Interfaces</x:String>
+      <x:String>BalaReva.Excel.Base</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.SharePoint.Client</x:String>
+      <x:String>UiPathTeam.SharePoint</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities.Libraries</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>BalaReva.EasyExcel.Main</x:String>
+      <x:String>BalaReva.EasyExcel.Base</x:String>
+      <x:String>BalaReva.EasyExcel.Utilities</x:String>
+      <x:String>BalaReva.EasyExcel.Sheets</x:String>
+      <x:String>BalaReva.Excel.Sheets</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="72">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Utilities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel.Utilities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Creating Yearly Leave Report Graph" DisplayName="Generate Yearly Leave Report Graph" sap:VirtualizedContainerService.HintSize="921,8463" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="yearlyLeaveReportFolder" />
+      <Variable x:TypeArguments="x:Int32" Name="maxCasualLeaves" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_YearlyLeaveReport" />
+      <Variable x:TypeArguments="x:String" Name="sheetName" />
+      <Variable x:TypeArguments="x:String" Name="monthlyLeaveReportName" />
+      <Variable x:TypeArguments="s:String[]" Name="monthlyLeaveReportChildren" />
+      <Variable x:TypeArguments="x:String" Name="monthlyLeaveReportURL" />
+      <Variable x:TypeArguments="x:String" Name="monthlyCurrentYearURL" />
+      <Variable x:TypeArguments="s:String[]" Name="monthlyCurrentYearChildren" />
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="workBook" />
+      <Variable x:TypeArguments="x:Int32" Name="Index" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Craete yearly leave report folder in machine" sap:VirtualizedContainerService.HintSize="879,448" sap2010:WorkflowViewState.IdRef="Sequence_14">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PayRollAutomation_YearlyLeaveReport" DisplayName="Get yearly leave report path" FolderPath="PayRoll_Automation" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
+        <ui:GetRobotAsset.Value>
+          <OutArgument x:TypeArguments="x:String">[out_YearlyLeaveReportName]</OutArgument>
+        </ui:GetRobotAsset.Value>
+      </ui:GetRobotAsset>
+      <Assign DisplayName="Assign- Yearly leave report folder" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[yearlyLeaveReportFolder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Format("{0}/{1}/{2}/",in_UserProfilePath,in_FolderName,out_YearlyLeaveReportName)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create yearly leave report folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[yearlyLeaveReportFolder]" />
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message- for starting of downloading monthly leave report" sap:VirtualizedContainerService.HintSize="879,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Downloading monthly leave reports from sharepoint...&quot;]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PayRollAutomation_MonthlyLeaveReport" DisplayName="Get monthly leave report name" FolderPath="PayRoll_Automation" sap:VirtualizedContainerService.HintSize="879,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_9">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[monthlyLeaveReportName]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope- to download monthly leave report from SharePoint" sap:VirtualizedContainerService.HintSize="879,1323" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[in_SharePointPassword]" SharePointInstanceType="Online" URL="[in_SharePointURL]" UserName="[in_SharePointUsername]">
+      <usa:SharepointApplicationScope.Body>
+        <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Get monthly leave report file from folder" sap:VirtualizedContainerService.HintSize="633,1182" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign monthly leave report folder " sap:VirtualizedContainerService.HintSize="591,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[monthlyLeaveReportURL]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}/{1}/",in_UserFolderURL,monthlyLeaveReportName)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <usal:GetChildrenNames AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChildrenNames="[monthlyLeaveReportChildren]" ChooseFile="False" DisplayName="Get montly leave report folder children names" sap:VirtualizedContainerService.HintSize="591,70" sap2010:WorkflowViewState.IdRef="GetChildrenNames_2" RelativeUrl="[monthlyLeaveReportURL]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+            <If Condition="[monthlyLeaveReportChildren.Contains(in_CurrentYear)]" DisplayName="Is the current year folder exist in the montly salary report folder on SharePoint?" sap:VirtualizedContainerService.HintSize="591,420" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence DisplayName="Current year folder is exist" sap:VirtualizedContainerService.HintSize="304,262" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign current year folder in monthly leave report folder" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[monthlyCurrentYearURL]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[String.Format("{0}{1}/",monthlyLeaveReportURL,in_CurrentYear)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <usal:GetChildrenNames AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChildrenNames="[monthlyCurrentYearChildren]" ChooseFile="False" DisplayName="Get current year folder children names" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="GetChildrenNames_3" RelativeUrl="[monthlyCurrentYearURL]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Current year folder is not exist" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw BRE-for monthly leave report" Exception="[new BusinessRuleException(&quot;Current year folder is missing in monthly leave report folder, please create it&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- monthly leave report on SharePoint- to create/update the yearly leave report" sap:VirtualizedContainerService.HintSize="591,420" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[monthlyCurrentYearChildren]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="monthlyLeaveReport" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Download all monthly leave report in local machine" sap:VirtualizedContainerService.HintSize="315,296" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="monthlyLeaveFolderOnSharePoint" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign monthly leave report folder on sharepoint" sap:VirtualizedContainerService.HintSize="273,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[monthlyLeaveFolderOnSharePoint]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("{0}{1}",monthlyCurrentYearURL,monthlyLeaveReport)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get monthly leave report" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_2" LocalPath="[yearlyLeaveReportFolder]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[monthlyLeaveFolderOnSharePoint]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </ActivityAction>
+      </usa:SharepointApplicationScope.Body>
+    </usa:SharepointApplicationScope>
+    <ui:LogMessage DisplayName="Log Message- for completion of downloading monthly leave report" sap:VirtualizedContainerService.HintSize="879,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Monthly leave reports are downloaded from sharepoint.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message- for starting of graph generation of yearly leave report" sap:VirtualizedContainerService.HintSize="879,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Creating yearly leave report with graph...&quot;]" />
+    <ui:BuildDataTable DataTable="[dt_yearlyLeaveReport]" DisplayName="Build yearly leave report data table" sap:VirtualizedContainerService.HintSize="879,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Department&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Total_x0020_Number_x0020_Of_x0020_Sick_x0020_Leave&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Total_x0020_Number_x0020_Of_x0020_Casual_x0020_Leave&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- monthly leave report on SharePoint" sap:VirtualizedContainerService.HintSize="879,1852" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[monthlyCurrentYearChildren]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="monthlyLeaveReport" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Get all monthly leave report" sap:VirtualizedContainerService.HintSize="843,1728" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_MonthlyLeaveReport" />
+              <Variable x:TypeArguments="x:Int32" Name="totalSickLeaveOfDepartments" />
+              <Variable x:TypeArguments="x:Int32" Name="totalCasualLeaveOfDepartments" />
+              <Variable x:TypeArguments="x:String" Name="monthlyLeaveReportPath" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign monthly leave report path" sap:VirtualizedContainerService.HintSize="801,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[monthlyLeaveReportPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}{1}",yearlyLeaveReportFolder,monthlyLeaveReport)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ReadRange AddHeaders="True" DataTable="[dt_MonthlyLeaveReport]" DisplayName="Read monthly leave report" sap:VirtualizedContainerService.HintSize="801,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[monthlyLeaveReportName]" WorkbookPath="[monthlyLeaveReportPath]">
+              <ui:ReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ReadRange.Range>
+            </ui:ReadRange>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_MonthlyLeaveReport]" DisplayName="For Each Row- of the monthly total leaves in the data table" sap:VirtualizedContainerService.HintSize="801,1078" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="MonthlyDepartment" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Check monthly department is exist in yearly department?" sap:VirtualizedContainerService.HintSize="767,958" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
+                      <Variable x:TypeArguments="x:String" Name="lookUpValue" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign look up value" sap:VirtualizedContainerService.HintSize="725,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[lookUpValue]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[MonthlyDepartment("Department").ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dt_yearlyLeaveReport]" DisplayName="Lookup monthly department in yearly data table" sap:VirtualizedContainerService.HintSize="725,291" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Department" LookupValue="[lookUpValue]" RowIndex="[rowIndex]" />
+                    <If Condition="[rowIndex= -1]" DisplayName=" If - monthly department is not exist in yearly leave report" sap:VirtualizedContainerService.HintSize="725,435" sap2010:WorkflowViewState.IdRef="If_6">
+                      <If.Then>
+                        <Sequence DisplayName="Department not exist" sap:VirtualizedContainerService.HintSize="376,277" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{MonthlyDepartment(&quot;Department&quot;).ToString,MonthlyDepartment(&quot;Total Number Of Sick Leave&quot;).ToString,MonthlyDepartment(&quot;Total Number Of Casual Leave&quot;).ToString}]" DataTable="[dt_yearlyLeaveReport]" DisplayName="Add row in yearly data table" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Department exist" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Update sick leave in yearly data table" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[dt_yearlyLeaveReport(rowIndex)("Total Number Of Sick Leave")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[cint(dt_yearlyLeaveReport(rowIndex)("Total Number Of Sick Leave"))+cint(MonthlyDepartment("Total Number Of Sick Leave").ToString)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Update casual leave  in yearly data table" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[dt_yearlyLeaveReport(rowIndex)("Total Number Of Casual Leave")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[cint(dt_yearlyLeaveReport(rowIndex)("Total Number Of Casual Leave"))+cint(MonthlyDepartment("Total Number Of Casual Leave").ToString)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <Assign DisplayName="Assign- calculate total sick leaves of departments" sap:VirtualizedContainerService.HintSize="801,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[totalSickLeaveOfDepartments]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[dt_MonthlyLeaveReport.AsEnumerable.Sum(function (Row) cint(Row("Total Number Of Sick Leave").ToString))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign- calculate total casual leaves of departments" sap:VirtualizedContainerService.HintSize="801,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[totalCasualLeaveOfDepartments]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[dt_MonthlyLeaveReport.AsEnumerable.Sum(function (Row) cint(Row("Total Number Of Casual Leave").ToString))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message- fo completely reading of monthly leave report" sap:VirtualizedContainerService.HintSize="801,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Total &quot;+totalSickLeaveOfDepartments.ToString+&quot; sick leaves and total &quot;+totalCasualLeaveOfDepartments.ToString+&quot; casual leaves from &quot;+monthlyLeaveReport+&quot; sheet is successfully added to yearly leave report.&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <Assign DisplayName="Assign- yearly leave report Excel path" sap:VirtualizedContainerService.HintSize="879,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_YearlyLeaveReportPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Format("{0}{1}_{2}.xlsx",yearlyLeaveReportFolder,out_YearlyLeaveReportName,in_CurrentYear)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope of Yearly Leave Report File to create chart" sap:VirtualizedContainerService.HintSize="879,606" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" Workbook="[workbook]" WorkbookPath="[out_YearlyLeaveReportPath]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Create excel file" sap:VirtualizedContainerService.HintSize="487,497" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign sheeet name" sap:VirtualizedContainerService.HintSize="445,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[sheetName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_YearlyLeaveReportName]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt_YearlyLeaveReport]" DisplayName="Write yearly leave report data table" sap:VirtualizedContainerService.HintSize="445,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[sheetName]">
+              <ui:ExcelWriteRange.StartingCell>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelWriteRange.StartingCell>
+            </ui:ExcelWriteRange>
+            <bec:ColumnChart ExecutionResult="{x:Null}" FilePassword="{x:Null}" ImageCopy="{x:Null}" LegendRange="{x:Null}" ModifyPassword="{x:Null}" CellRange="[&quot;A1:C&quot;+( dt_YearlyLeaveReport.RowCount+1).ToString]" ChartTitle="Yearly Leave Tracker" ChartType="Column3DClustered" ContinueOnError="False" Delay="3" DisplayName="Create column chart" FilePath="[out_YearlyLeaveReportPath]" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="ColumnChart_2" SheetName="[sheetName]" ShowLegendKey="True" ShowValuePosition="OutsideEnd" ShowValueTextOrientation="Horizontal">
+              <bec:ColumnChart.Options>
+                <bec:ShowOptions AutoText="True" DataLabelsType="ShowPercent" HasLeaderLines="False" LegendKey="ShowLabel" Separator="" ShowBubbleSize="False" ShowCategoryName="True" ShowLegend="True" ShowPercentage="False" ShowSeriesName="False" ShowValue="True" />
+              </bec:ColumnChart.Options>
+              <bec:ColumnChart.Size>
+                <bec:ChartSize Height="300" Left="200" Top="200" Width="300" />
+              </bec:ColumnChart.Size>
+            </bec:ColumnChart>
+            <bes:DeleteSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Delete &quot;sheet1&quot;" FilePath="[out_YearlyLeaveReportPath]" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="DeleteSheet_1" SheetName="Sheet1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:ExcelCloseWorkbook DisplayName="Close current workbook" sap:VirtualizedContainerService.HintSize="879,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_2" Workbook="[workBook]" />
+    <Assign DisplayName="Assign max casual leaves" sap:VirtualizedContainerService.HintSize="879,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[maxCasualLeaves]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[dt_YearlyLeaveReport.AsEnumerable.Max(Function(row) cint(row("Total Number Of Casual Leave")))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Index]" DataTable="[dt_YearlyLeaveReport]" DisplayName="For Each Row- in yearly leave data table" sap:VirtualizedContainerService.HintSize="879,747" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="DepartmentName" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Change font color of maximum casual leave department" sap:VirtualizedContainerService.HintSize="656,627" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[cint(DepartmentName(&quot;Total Number Of Casual Leave&quot;))=maxCasualLeaves]" DisplayName="If- &quot;Total Number Of Casual Leave&quot; is equal to maxcasualleaves" sap:VirtualizedContainerService.HintSize="614,535" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Sequence DisplayName="Change font color" sap:VirtualizedContainerService.HintSize="578,348" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <bem:ExcelScope FilePassword="{x:Null}" ModifyPassword="{x:Null}" DisplayName="Excel Scope- For yearly leave file" FilePath="[out_YearlyLeaveReportPath]" sap:VirtualizedContainerService.HintSize="536,256" sap2010:WorkflowViewState.IdRef="ExcelScope_1" Visible="False">
+                    <bem:ExcelScope.Body>
+                      <ActivityAction x:TypeArguments="bem:ExcelParam">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="bem:ExcelParam" Name="WorkBookObj" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Change font color to red" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <bes1:CellFont FontName="{x:Null}" CellRange="[&quot;A&quot;+(index+2).ToString+&quot;:&quot;+&quot;C&quot;+(index+2).ToString]" Delay="3" DisplayName="Cell Font change to red" FontColor="[System.Drawing.Color.Red]" FontScript="None" FontSize="0" FontUnderLine="None" Font_Style="None" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CellFont_1" SheetName="[sheetName]" Strikethrough="None" />
+                        </Sequence>
+                      </ActivityAction>
+                    </bem:ExcelScope.Body>
+                  </bem:ExcelScope>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message- for completion of graph generation" sap:VirtualizedContainerService.HintSize="879,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Yearly leave report with graph is generated successfully.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message- for starting of uploading yearly leave report" sap:VirtualizedContainerService.HintSize="879,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Uploading yearly leave report on sharepoint...&quot;]" />
+    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope- for yearly leave report to upload in yearly leave report folder on sharepoint" sap:VirtualizedContainerService.HintSize="879,1803" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_3" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[in_SharePointPassword]" SharePointInstanceType="Online" URL="[in_SharePointURL]" UserName="[in_SharePointUsername]">
+      <usa:SharepointApplicationScope.Body>
+        <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Create yearly leave report folder and upload yearly leave report in it" sap:VirtualizedContainerService.HintSize="526,1662" sap2010:WorkflowViewState.IdRef="Sequence_25">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="s:String[]" Name="userFolderChildrenName" />
+              <Variable x:TypeArguments="s:String[]" Name="yearlyChildrenNames" />
+              <Variable x:TypeArguments="x:String" Name="spYearlyLeaveReportPath" />
+              <Variable x:TypeArguments="x:String" Name="yearlyLeaveFolderOnSharePoint" />
+              <Variable x:TypeArguments="x:String" Name="currentYearFolder" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign monthly leave report path on sharepoint" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[spYearlyLeaveReportPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}/{1}/",in_UserPath,out_YearlyLeaveReportName)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <usal:GetChildrenNames AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChildrenNames="[userFolderChildrenName]" ChooseFile="False" DisplayName="Get user folder children names" sap:VirtualizedContainerService.HintSize="484,70" sap2010:WorkflowViewState.IdRef="GetChildrenNames_4" RelativeUrl="[in_UserFolderURL]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+            <If Condition="[Not userFolderChildrenName.Contains(out_YearlyLeaveReportName)]" DisplayName="Is yearly leave report folder exist not on sharepoint?" sap:VirtualizedContainerService.HintSize="484,383" sap2010:WorkflowViewState.IdRef="If_7">
+              <If.Then>
+                <Sequence DisplayName="Yearly leave report folder not exist" sap:VirtualizedContainerService.HintSize="311,196" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <usal:CreateFolder AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Create yearly salary report folder" sap:VirtualizedContainerService.HintSize="269,104" sap2010:WorkflowViewState.IdRef="CreateFolder_1" LibraryName="[in_SharedDocuments]" RelativeUrl="[spYearlyLeaveReportPath]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="True" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                </Sequence>
+              </If.Then>
+            </If>
+            <Assign DisplayName="Assign yearly leave report folder on sharepoint" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[yearlyLeaveFolderOnSharePoint]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.Format("{0}/{1}/",in_UserFolderURL,out_YearlyLeaveReportName)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <usal:GetChildrenNames AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChildrenNames="[yearlyChildrenNames]" ChooseFile="False" DisplayName="Get yearly leave report folder children names" sap:VirtualizedContainerService.HintSize="484,70" sap2010:WorkflowViewState.IdRef="GetChildrenNames_5" RelativeUrl="[yearlyLeaveFolderOnSharePoint]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+            <If Condition="[Not  yearlyChildrenNames.Contains(in_CurrentYear)]" DisplayName="Is current year folder exist not on sharepoint?" sap:VirtualizedContainerService.HintSize="484,483" sap2010:WorkflowViewState.IdRef="If_8">
+              <If.Then>
+                <Sequence DisplayName="Current year folder not exist" sap:VirtualizedContainerService.HintSize="311,296" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="currentYearPathOnSharePoint" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign current year path on sharepoint" sap:VirtualizedContainerService.HintSize="269,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[currentYearPathOnSharePoint]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[String.format("{0}{1}/",spYearlyLeaveReportPath,in_CurrentYear)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <usal:CreateFolder AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Create current year folder" sap:VirtualizedContainerService.HintSize="269,104" sap2010:WorkflowViewState.IdRef="CreateFolder_2" LibraryName="[in_SharedDocuments]" RelativeUrl="[currentYearPathOnSharePoint]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="True" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                </Sequence>
+              </If.Then>
+            </If>
+            <Assign DisplayName="Assign current year folder on sharepoint" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[currentYearFolder]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[String.format("{0}/{1}/{2}/",in_UserFolderURL,out_YearlyLeaveReportName,in_CurrentYear)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <usal:UploadFile AttachmentsAction="{x:Null}" PropertiesToAdd="{x:Null}" RelativeUrlHintText="{x:Null}" AllowOperationsOnASPXFiles="False" AllowOverwrite="True" CheckInFileAfterCreation="False" CheckOutFileBeforeOverwrite="False" ChooseFile="True" DisplayName="Upload yearly salary report file on sharepoint" sap:VirtualizedContainerService.HintSize="484,104" sap2010:WorkflowViewState.IdRef="UploadFile_1" LocalPath="[out_YearlyLeaveReportPath]" LocalPathHintText="The current local path of the file" RelativeUrl="[currentYearFolder]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+          </Sequence>
+        </ActivityAction>
+      </usa:SharepointApplicationScope.Body>
+    </usa:SharepointApplicationScope>
+    <ui:LogMessage DisplayName="Log Message- for completion of uploading yearly leave report" sap:VirtualizedContainerService.HintSize="879,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Yearly leave report is uploaded successfully on sharepoint.&quot;]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,192 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Send_Mail_of_Yearly_Report_and_Leave_Tracker" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_YearlySalaryReportPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_YearlyLeaveReportPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentYear" Type="InArgument(x:String)" />
+    <x:Property Name="in_YearlySalaryReportName" Type="InArgument(x:String)" />
+    <x:Property Name="in_YearlyLeaveReportName" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Send_Mail_of_Yearly_Report_and_Leave_Tracker.in_CurrentYear>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Send_Mail_of_Yearly_Report_and_Leave_Tracker.in_CurrentYear>
+  <this:Send_Mail_of_Yearly_Report_and_Leave_Tracker.in_YearlySalaryReportName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Send_Mail_of_Yearly_Report_and_Leave_Tracker.in_YearlySalaryReportName>
+  <this:Send_Mail_of_Yearly_Report_and_Leave_Tracker.in_YearlyLeaveReportName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Send_Mail_of_Yearly_Report_and_Leave_Tracker.in_YearlyLeaveReportName>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1208,1466</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Send_Mail_of_Yearly_Report_and_Leave_Tracker_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Send Mail of Yearly Report and Leave Report" sap:VirtualizedContainerService.HintSize="421,1401" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ss:SecureString" Name="gmailPassword" />
+      <Variable x:TypeArguments="x:String" Name="gmailUsername" />
+      <Variable x:TypeArguments="x:String" Name="mailIdOfManager" />
+      <Variable x:TypeArguments="x:String" Name="executionDate" />
+      <Variable x:TypeArguments="x:String" Name="departmentSharePointLink" />
+      <Variable x:TypeArguments="x:String" Name="departmentsFolderName" />
+      <Variable x:TypeArguments="x:Int32" Name="smtpPort" />
+      <Variable x:TypeArguments="x:String" Name="smtpServer" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Email Credential And Asset workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_EmailCredentialAndAsset.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_GmailPassword">[gmailPassword]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_GmailUsername">[gmailUsername]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_SMTPPort">[smtpPort]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_SMTPServer">[smtpServer]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message- for starting of sending mail" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Mailing yearly reports to the manager...&quot;]" />
+    <Assign DisplayName="Assign execution date" sap:VirtualizedContainerService.HintSize="379,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[executionDate]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[now.ToString("MM/dd/yyyy")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PayRollAutomation_DepartmentSharePointLink" DisplayName="Get SharePoint department link" FolderPath="PayRoll_Automation" sap:VirtualizedContainerService.HintSize="379,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[departmentSharePointLink]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PayRollAutomation_DepartmentsFolder" DisplayName="Get departments folder name" FolderPath="PayRoll_Automation" sap:VirtualizedContainerService.HintSize="379,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[departmentsFolderName]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PayRollAutomation_MailIdOfReportRecipient" DisplayName="Get mail id of manager" FolderPath="PayRoll_Automation" sap:VirtualizedContainerService.HintSize="379,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[mailIdOfManager]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send Yearly Salry Report workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_SendYearlySalryReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CurrentYear" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExecutionDate">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="executionDate" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentSharePointLink">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="departmentSharePointLink" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentsFolderName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="departmentsFolderName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlySalaryReportName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_YearlySalaryReportName" />
+        </InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_GmailPassword">
+          <mva:VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="gmailPassword" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GmailUsername">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="gmailUsername" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_SMTPPort">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="smtpPort" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SMTPServer">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="smtpServer" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MailIdOfManager">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="mailIdOfManager" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlySalaryReportPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_YearlySalaryReportPath" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Send_Yearly_Leave_Report workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflow\PayRollAutomation_SendYearlyLeaveReport.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CurrentYear">[in_CurrentYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExecutionDate">[executionDate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentSharePointLink">[departmentSharePointLink]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DepartmentsFolderName">[departmentsFolderName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlyLeaveReportName">[in_YearlyLeaveReportName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MailIdOfManager">[mailIdOfManager]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_GmailPassword">[gmailPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GmailUsername">[gmailUsername]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_SMTPPort">[smtpPort]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SMTPServer">[smtpServer]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_YearlyLeaveReportPath">[in_YearlyLeaveReportPath]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log Message- for completion of sending mail" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Yearly reports are mailed successfully to the manager.&quot;]" />
+  </Sequence>
+</Activity>
